@@ -1,3 +1,4 @@
+<!---
 # Installing
 
 Glimmer uses [Ember CLI](https://ember-cli.com/), the battle-tested command-line interface tool (CLI) from the Ember project, to help you create and manage your applications.
@@ -7,7 +8,19 @@ It provides the following features, among others:
 * A build pipeline with testing, development, and production environments
 * [TypeScript](http://www.typescriptlang.org/) support out-of-the-box
 * Generators for components and helpers
+-->
 
+# Установка
+
+Glimmer использует [Ember CLI](https://ember-cli.com/), для облегчения создания и управления вашим приложением.
+С помощью Ember CLI можно:
+
+* Создавать новые приложения с жесткой структурой проекта (convention over configuration)
+* Сборку проекта в dev, и prod окружении (с тестированием)
+* [TypeScript](http://www.typescriptlang.org/) поддерживается из коробки
+* Генераторы для components и helpers
+
+<!---
 ## Pre-requisites
 
 ### Git
@@ -61,6 +74,64 @@ npm install -g ember-cli
 ```
 
 To verify that it's correctly installed, run the following command:
+
+```bash
+ember -v
+```
+-->
+
+## Перед установкой
+
+### Git
+
+Для использования Ember CLI, должен быть установлен Git.    
+В операционных системах Mac OS X и Linux, Git установлен по умолчанию.    
+Для OS Windows вы можете скачать <a href="http://git-scm.com/download/win">инсталлер Git</a>. 
+
+### Node.js и npm
+
+Ember CLI использует JavaScript, и требует установленного [Node.js](https://nodejs.org/) + [npm](https://www.npmjs.com/). 
+
+Для использования Ember у вас должна быть установлен Node.js 6 или выше, а также npm 2.14.2 или выше.   
+Чтобы узнать ваши версия nodejs и npm, выполните в терминале:
+
+```bash
+node --version
+npm --version
+```
+
+Если после ввода команд, терминал сообщил об ошибке *"command not found"*, или *"outdated version for nodejs"*   
+
+* Windows или Mac пользователи могут скачать и установить Node.js [по этой ссылке](http://nodejs.org/download/).
+* Пользовали Mac также могут установить Node используя [Homebrew](http://brew.sh/). После установки 
+Homebrew, выполните команду `brew install node` для того, чтобы установить Node.js.
+* Пользователи Linux могут использовать [инструкцию по установке Node.js](https://nodejs.org/en/download/package-manager/).
+
+Если у вас устаревшая версия npm, выполните команду `npm install -g npm`.
+
+### Yarn
+
+Мы будем использовать [Yarn](https://yarnpkg.com/en/) для управления зависимостями в Glimmer проекте, т.к yarn реализует функционал лучше чем npm, такой как детерминированные сборки (lockfile) and способность работать offline.
+
+Вы можете установить yarn с помощью <a href="https://yarnpkg.com/en/docs/install">этой инструкции</a>
+
+
+## Установка
+
+To generate new projects, we will need Ember CLI.
+Для создания нового проекта, нам понадобится Ember CLI
+
+```bash
+yarn global add ember-cli
+```
+
+Или:
+
+```bash
+npm install -g ember-cli
+```
+
+Подтверждением успешной установки будет результат команды:
 
 ```bash
 ember -v
