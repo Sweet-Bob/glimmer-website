@@ -12,7 +12,7 @@ It provides the following features, among others:
 
 # Установка
 
-Glimmer использует [Ember CLI](https://ember-cli.com/), для облегчения создания и управления вашим приложением.
+Glimmer использует [Ember CLI](https://ember-cli.com/), для создания и управления вашим приложением.
 С помощью Ember CLI можно:
 
 * Создавать новые приложения с жесткой структурой проекта (convention over configuration)
@@ -92,8 +92,8 @@ ember -v
 
 Ember CLI использует JavaScript, и требует установленного [Node.js](https://nodejs.org/) + [npm](https://www.npmjs.com/). 
 
-Для использования Ember у вас должна быть установлен Node.js 6 или выше, а также npm 2.14.2 или выше.   
-Чтобы узнать ваши версия nodejs и npm, выполните в терминале:
+Для использования Ember у вас должен быть установлен Node.js 6 или выше, а также npm 2.14.2 или выше.   
+Чтобы узнать ваши версии nodejs и npm, выполните в терминале:
 
 ```bash
 node --version
@@ -118,7 +118,6 @@ Homebrew, выполните команду `brew install node` для того,
 
 ## Установка
 
-To generate new projects, we will need Ember CLI.
 Для создания нового проекта, нам понадобится Ember CLI
 
 ```bash
