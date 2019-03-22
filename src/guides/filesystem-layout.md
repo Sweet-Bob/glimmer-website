@@ -1,6 +1,6 @@
-# File System Layout
+# Структура приложения
 
-Now that we're up and running, let's take a look at how things are setup. Here's what our brand-new `my-app` currently looks like:
+Когда первоначальная настройка завершена, давайте взглянем на наше приложение `my-app`: 
 
 ```sh
 my-app
@@ -25,21 +25,21 @@ my-app
 ... other files ...
 ```
 
-Briefly, those files and folders are:
+В кратце, выше перечисленные файлы и директории преназначены для: 
 
-- `my-app/config/environment.js`: the base Glimmer config file
-- `my-app/config/*.ts`: configuration files to keep Typescript happy. *Note: Glimmer only runs in Typescript at the moment. We aim to quickly add ES2015 Javascript support as well.*
-- `my-app/dist`: your built files end up here
-- `my-app/src/index.ts`: used to do initial app config before our Glimmer app boots (the div ID Glimmer renders into is set here (see the `containerElement` variable)
-- `my-app/ember-cli-build.js`: used to configure Ember-CLI in various ways (importing vendor files, Broccoli options, etc.)
+- `my-app/config/environment.js`: конфигурационный Glimmer файл 
+- `my-app/config/*.ts`: конфигурационные файлы. *Важно: Глиммер работает только с использованием Typescript. В ближайшее время мы добавим поддержку ES2015 Javascript*
+- `my-app/dist`: ваши скомпилированные исходники
+- `my-app/src/index.ts`: используется для инициализации приложения, перед тем как наше Glimmer приложение будет загружено (Glimmer приложение будет вставлено в div с ID указанным вами (смотрите `containerElement` свойство))
+- `my-app/ember-cli-build.js`: используется для конфигурирования Ember-CLI (импорт vendor файлов, настройка Broccoli, и.т.д) 
 
-However, where we'll spend most of our time is in the `my-app/src/ui` folder.
+Однако, больше всего времени мы проведем в директории `my-app/src/ui` 
 
-## The UI folder
+## Директория UI
 
-As you can see, Glimmer puts all our components in the `my-app/src/ui/components` folder with the `MyApp` component being where our app logic really begins. All other logic and components should be referenced in the `MyApp/template.hbs` file (and we can nest them as deeply as we desire).
+Как вы можете увидеть, Glimmer помещает все наши компоненты в директорию `my-app/src/ui/components` с корневым компонентом `MyApp`, здесь начинается разработка приложения. Вся остальная логика и компоненты должны быть размещены внутри `MyApp/template.hbs` файла.
 
-So let's add a new component in Glimmer. To do so, we'll run the following command to generate an initial blueprint for a component:
+Итак, давайте добавим новый компонент в Glimmer. Чтобы это сделать, выполним следущую команду для генерации первого компонента из blueprint:
 
 ```sh
 $ ember g glimmer-component HelloGlimmer
@@ -49,9 +49,9 @@ installing component
   create src/ui/components/HelloGlimmer/template.hbs
 ```
 
-As you can see, we generate two files (`component.ts` and `template.hbs`) in the newly created `src/ui/components/HelloGlimmer` folder. A Glimmer component uses a template to generate all our HTML (using a [Handlebars](http://handlebarsjs.com) template with Glimmer/Ember additions) and a Typescript/Javascript file that provides additional properties and event handlers (known as actions) to our template. We'll cover more details about how Handlebars works on subsequent pages.
+Как вы можете увидеть, мы сгенерировали два файла (`component.ts` и `template.hbs`) в директории `src/ui/components/HelloGlimmer`. Glimmer компоненты используют шаблон для генерации HTML (с использованием [Handlebars](http://handlebarsjs.com) шаблонизатора с расширенным функционалом от Glimmer/Ember) и Typescript/Javascript файл, который предоставляет свойства и обработчики (известные как actions в Ember) для шаблона. Больше деталей как работает Handlebars будет рассказано далее.    
 
-All other components will also live in `src/ui/components` unless we deliberately nest them. So for example, if we add a second component called `ConferenceSpeakers`:
+Если вы сгенерируете дополнительные компоненты, они также будут размещены в `src/ui/components` если мы сознательно не вложим их. Для примера, давайте добавим второй компонент с названием `ConferenceSpeakers`:  
 
 ```sh
 $ ember g glimmer-component ConferenceSpeakers
@@ -61,7 +61,7 @@ installing component
   create src/ui/components/ConferenceSpeakers/template.hbs
 ```
 
-we will see our new `conference-speakers` component added to our UI folder:
+Давайте посмотрим на наш новый компонент `conference-speakers` в структуре приложения:
 
 ```sh
 my-app
@@ -86,7 +86,7 @@ my-app
 ... snipped ...
 ```
 
-This then allows us to use that component as a top-level component in our `MyApp/template.hbs` file:
+Мы можем использовать новый компонент в `MyApp/template.hbs` файле:
 
 ```hbs
 <div>
@@ -94,7 +94,7 @@ This then allows us to use that component as a top-level component in our `MyApp
 </div>
 ```
 
-But we can also add sub-components to our app to nest those components more deeply in our folder tree. Let's generate one more component:
+Также мы добавим под-компонент в наше приложение, для демонстрации более глубокой вложености:
 
 ```sh
 $ ember g glimmer-component ConferenceSpeakers/ConferenceSpeaker
@@ -104,7 +104,7 @@ installing component
   create src/ui/components/ConferenceSpeakers/ConferenceSpeaker/template.hbs
 ```
 
-This generates our component inside our `ConferenceSpeakers` folder:
+Эта команда сгенерирует следующую структуру внутри директории `ConferenceSpeakers`:
 
 ```sh
 my-app
@@ -124,7 +124,7 @@ my-app
 
 ... snipped ...
 ```
-Our new component then is only useable from inside our `ConferenceSpeakers/template.hbs` file:
+Наш новый компонент может быть использован только внутри файла `ConferenceSpeakers/template.hbs`: 
 
 ```hbs
 <div>
@@ -132,15 +132,15 @@ Our new component then is only useable from inside our `ConferenceSpeakers/templ
 </div>
 ```
 
-Glimmer uses a "local resolution" with nested components where the following syntax will not work in our main component (`MyApp/template.hbs`):
+Glimmer использует "local resolution" для вложенных компонентов, `ConferenceSpeaker` не будет работать в нашем корневом компоненте (`MyApp/template.hbs`):
 
 ```hbs
 {{!-- invalid --}}
 <ConferenceSpeakers/ConferenceSpeaker />
 ```
 
-More details on the "local resolution" strategy will be posted shortly.
+Подробнее о "local resolution" стратегии будет добавлено в ближайшее время.
 
-## Styles
+## Стили
 
-Depending on where you are using your Glimmer app, your containing apps styles will already be affecting the look of your app. However, you can also add new styles that only apply to your Glimmer components by editing `src/ui/styles/app.css`
+В зависимости от того, где вы используете Glimmer приложение, стили содержащихся приложений уже будут влиять на внешний вид вашего приложения. Однако вы также можете добавить новые стили, которые применяются только к вашим компонентам Glimmer, отредактировав `src/ui/styles/app.css`
